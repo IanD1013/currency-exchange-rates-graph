@@ -5,7 +5,7 @@ const button = document.getElementById("test");
 
 const fromOptions = document.getElementById("fromDropdownContent");
 const toOptions = document.getElementById("toDropdownContent");
-let showing = false;
+let showingDropdown = null; // the event of user focusing the input field
 
 const inputs = [
   document.getElementById("fromInput"),
@@ -13,6 +13,13 @@ const inputs = [
 ];
 
 const switchBtn = document.getElementById("switchBtn");
+
+const dropdowns = document.querySelectorAll(".dropdown");
+dropdowns.forEach((drop) =>
+  drop.addEventListener("mouseleave", function () {
+    hideOptions(showingDropdown);
+  })
+);
 
 // set default input values
 // and send GET request
@@ -34,8 +41,8 @@ inputs.forEach((input) =>
   input.addEventListener("focus", (event) => showOptions(event))
 );
 
-function showOptions(currentInput) {
-  let id = currentInput.target.id;
+function showOptions(event) {
+  let id = event.target.id;
   let dropdown = null;
 
   if (id == "fromInput") {
@@ -54,20 +61,22 @@ function showOptions(currentInput) {
   }
 
   // add event listeners to selections
-  dropdown.childNodes.forEach((node) =>
-    node.addEventListener("click", function () {
-      setInputValue(currentInput.target, node);
-      // NOTE: need to listen for window clicks
-      // in order to stop listening to stuff
-      hideOptions(currentInput);
+  dropdown.childNodes.forEach((option) =>
+    option.addEventListener("click", function () {
+      event.target.value = option.innerText;
+      hideOptions(event);
     })
   );
 
-  showing = true;
+  showingDropdown = event;
 }
 
-function hideOptions(currentInput) {
-  let id = currentInput.target.id;
+function hideOptions(event) {
+  if (event == null) {
+    return;
+  }
+
+  let id = event.target.id;
   let dropdown = null;
 
   if (id == "fromInput") {
@@ -89,9 +98,5 @@ function hideOptions(currentInput) {
   dropdown.childNodes.forEach((node) =>
     node.removeEventListener("click", null)
   );
-  showing = false;
-}
-
-function setInputValue(input, opt) {
-  input.value = opt.innerText;
+  showingDropdown = null;
 }
