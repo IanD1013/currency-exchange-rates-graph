@@ -16,14 +16,13 @@ const inputs = {
   ),
 };
 
-console.log(inputs);
-
-// init default values on page load
-inputs.from.setInput("EUR");
-inputs.to.setInput("USD");
-
 switchBtn.addEventListener("click", () => {
   const temp = inputs.from.getInput();
   inputs.from.setInput(inputs.to.getInput());
   inputs.to.setInput(temp);
+});
+
+window.addEventListener("DOMContentLoaded", () => {
+  inputs.from.setInput("EUR");
+  inputs.to.setInput("USD");
 });
