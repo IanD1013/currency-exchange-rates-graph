@@ -4,24 +4,25 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Exchange Rates</title>
 
-    <title>CurrencyExchangeRatesGraph</title>
-
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="css/main.css" />
-  </head>
 
+    <script src="https://kit.fontawesome.com/b115137311.js" crossorigin="anonymous"></script>
+  </head>
   <body>
-    <button id="test">TEST</button>
     <div class="header">
-      <h1>Euro to US Dollar Exchange Rate Chart</h1>
-      <p>Historical Currency Exchange Rates Chart</p>
+      <h1><span class="from-label">Euro</span> to <span class="to-label">US</span> Exchange Rate Chart</h1>
+      <p>Currencyscoop Historical Currency Exchange Rates Chart</p>
     </div>
 
     <div class="container">
-      <div class="chart__container">
-        <div class="grid chart__controls">
-          <h5 class="from-label">From</h5>
-
+      <div class="graph__container">
+        <div class="grid graph__controls">
+          <h5 class="from-text">From</h5>
           <div class="dropdown from">
             <input id="fromInput" />
             <div id="fromDropdownContent" class="dropdown__content">
@@ -60,11 +61,10 @@
               <option>ZAR</option>
             </div>
           </div>
-
-          <button class="switch-btn" id="switchBtn">Switch</button>
-
-          <h5 class="to-label">To</h5>
-
+          <button class="switch-btn" id="switchBtn">
+            <i class="fas fa-exchange-alt fa-lg"></i>
+          </button>
+          <h5 class="to-text">To</h5>
           <div class="dropdown to">
             <input id="toInput" />
             <div id="toDropdownContent" class="dropdown__content">
@@ -105,17 +105,31 @@
           </div>
         </div>
 
-        <div class="chart_info">
-          <div>
-            <h3>EUR to USD Chart</h3>
+        <div class="graph__info">
+          <div class="graph__label">
+            <h3><span class="from-label">EUR</span> to <span class="to-label">USD</span> Chart</h3>
           </div>
 
           <div>
-            <h3>1 EUR = 1.17282 USD Aug 12, 2021, 14:53 UTC</h3>
+            <h3>
+              1 <span class="from-label">EUR</span> =
+              <span id="latestValue">1.17282</span>
+              <span class="to-label">USD</span>
+              <span id="latestDate">Aug 12, 2021, 14:53 UTC</span>
+            </h3>
           </div>
         </div>
 
-        <div class="chart">
+        <div class="graph__date-selection">
+          <button class="date-btn">1W</button>
+          <button class="date-btn selected">1M</button>
+          <button class="date-btn">1Y</button>
+          <button class="date-btn">2Y</button>
+          <button class="date-btn">5Y</button>
+          <button class="date-btn">10Y</button>
+        </div>
+
+        <div class="graph">
           <canvas id="graph"></canvas>
         </div>
       </div>
