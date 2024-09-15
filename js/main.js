@@ -2,10 +2,6 @@ import { containsGivenLetters, formatDate } from './utils/utils.js';
 import { Graph } from './graph/graph.js';
 import { CurrencyService } from './services/currencyService.js';
 
-/**
- * This class handles search input,
- * dropdown input and html label change
- */
 class Input {
   constructor(inputField, dropdown, dropdownContent, labels, updateFunction) {
     this.inputField = inputField;
