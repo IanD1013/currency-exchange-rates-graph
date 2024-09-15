@@ -1,22 +1,41 @@
+/* Globals */
+
 * {
   box-sizing: border-box;
 }
 
 :root {
-  --clr-gray: gray;
+  --clr-gray: #b8c8cf;
   --clr-orange: orange;
+  --clr-blue: #003399;
+  --clr-dark-blue: #000066;
 }
 
 body {
   margin: 0;
   padding: 0;
-  background-color: var(--clr-gray);
-  font-family: Arial, Helvetica, sans-serif;
+  background: linear-gradient(var(--clr-blue) 50%, white 90%) no-repeat;
+  font-family: 'Inter', sans-serif;
 }
 
 input {
+  font-family: 'Inter', sans-serif;
+  font-weight: 600;
+  font-size: 16px;
+
+  padding-left: 1.2rem;
+
   width: 100%;
   height: 50px;
+
+  border: 2px solid var(--clr-gray);
+  border-radius: 20px;
+}
+
+input:focus {
+  -webkit-appearance: none;
+  outline: none;
+  border-color: var(--clr-blue);
 }
 
 h1,
@@ -24,51 +43,33 @@ p {
   margin: 0;
 }
 
-.header {
-  background-color: var(--clr-orange);
+/* Buttons */
+
+.date-btn {
+  border: 0;
+  border-radius: 25px;
+  background-color: white;
+  color: var(--clr-gray);
+  padding: 8px 16px;
+
+  font-weight: bold;
+}
+
+.date-btn:hover {
+  background-color: var(--clr-gray);
   color: white;
-  text-align: center;
-}
-
-.header h1 {
-  padding: 2rem 0;
-}
-
-.header p {
-  padding-bottom: 2rem;
-}
-
-.grid {
-  display: grid;
-  grid-template-columns: 1fr 0.1fr 1fr;
-  grid-template-rows: auto;
-}
-
-.from {
-  grid-column-start: 1;
-  grid-row-start: 2;
-}
-
-.from-label {
-  grid-column-start: 1;
-  justify-self: start;
-}
-
-.to-label {
-  grid-column-start: 3;
-  justify-self: start;
-}
-
-.to {
-  grid-column-start: 3;
-  grid-row-start: 2;
 }
 
 .switch-btn {
   border-radius: 50px;
-  border: 0;
+  border: 2px solid var(--clr-gray);
   height: 50px;
   width: 50px;
+  color: var(--clr-blue);
+
+  margin: 0 auto 0 auto;
+
+  background-color: transparent;
 
   grid-column-start: 2;
   grid-row-start: 2;
@@ -77,41 +78,16 @@ p {
 }
 
 .switch-btn:hover {
-  background-color: gray;
+  background-color: var(--clr-gray);
+  color: white;
 }
 
-.w {
-  display: block;
-  background-color: yellow;
-  width: 50px;
-  height: 50px;
+.selected {
+  background-color: var(--clr-blue);
+  color: white;
 }
 
-.container {
-  background-color: greenyellow;
-  text-align: center;
-  margin: auto;
-  padding: 0 5rem;
-  max-width: 90rem;
-}
-
-.chart__controls {
-  position: relative;
-  padding-top: 2rem;
-}
-
-.chart__info {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.chart {
-  margin: 0 auto 0 auto;
-  background-color: red;
-  width: 100%;
-  height: 300px;
-}
+/* Dropdown option styles */
 
 .dropdown__content {
   display: none;
@@ -127,10 +103,10 @@ p {
 .dropdown__content option {
   padding-top: 1rem;
   padding-bottom: 1rem;
+  padding-left: 1.2rem;
   width: 100%;
   background-color: white;
   text-align: left;
-  padding-left: 0.5rem;
 }
 
 .dropdown__content option:hover {
@@ -144,4 +120,133 @@ p {
 
 .hide {
   display: none;
+}
+
+.highlight {
+  color: var(--clr-blue);
+  font-weight: 600;
+}
+
+/* Container */
+
+.container {
+  border-radius: 12px;
+  border: 3px solid var(--clr-blue);
+  background-color: white;
+  text-align: center;
+  margin: auto;
+  padding: 5rem 5rem;
+  max-width: 90rem;
+
+  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+}
+
+/* Header styles */
+
+.header {
+  background-color: var(--clr-blue);
+  color: white;
+  text-align: center;
+}
+
+.header h1 {
+  padding: 2rem 0;
+}
+
+.header p {
+  padding-bottom: 2rem;
+}
+
+/* Grid */
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 0.1fr 1fr;
+  grid-template-rows: auto;
+}
+
+/* Label styles */
+
+.from {
+  grid-column-start: 1;
+  grid-row-start: 2;
+}
+
+.from-text {
+  grid-column-start: 1;
+  justify-self: start;
+
+  margin-bottom: 0.3rem;
+  margin-left: 0;
+  margin-right: 0;
+  margin-top: auto;
+}
+
+.to-text {
+  grid-column-start: 3;
+  justify-self: start;
+
+  margin-bottom: 0.3rem;
+  margin-left: 0;
+  margin-right: 0;
+  margin-top: auto;
+}
+
+.to {
+  grid-column-start: 3;
+  grid-row-start: 2;
+}
+
+/* Graph styles */
+
+.graph__controls {
+  position: relative;
+  padding-top: 2rem;
+}
+
+.graph__info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  color: var(--clr-dark-blue);
+}
+
+.graph {
+  margin: 0 auto 0 auto;
+  width: 100%;
+  height: 300px;
+}
+
+.graph__container {
+  padding-bottom: 8rem;
+}
+
+/* Canvas */
+
+canvas {
+  width: 100%;
+  height: 100%;
+}
+
+/*
+***
+* Media queries
+***
+* This section changes
+* layout for better view on mobile
+***
+*/
+@media screen and (max-width: 62.5rem) {
+  .container {
+    padding: 0 0.2rem;
+  }
+
+  .graph__label {
+    display: none;
+  }
+
+  .graph__info {
+    justify-content: center;
+  }
 }
